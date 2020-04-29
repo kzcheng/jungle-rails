@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path("../boot", __FILE__)
 
 require "rails"
 # Pick the frameworks you want:
@@ -30,9 +30,9 @@ module Jungle
     # config.i18n.default_locale = :de
 
     config.generators do |g|
-      g.skip_routes  true
-      g.helper       false
-      g.assets       false
+      g.skip_routes true
+      g.helper false
+      g.assets false
     end
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
