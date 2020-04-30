@@ -5,9 +5,8 @@
   </header>
 
   <% if enhanced_cart.length <= 0 %>
-    <%#TODO Make this part look better %>
-    <div>
-      Cart is empty.<br>
+    <div class="panel panel-default col-sm-4">
+      Cart is empty<br>
       <%= link_to 'Go back to homepage', :root %>
     </div>
   <% else %>
