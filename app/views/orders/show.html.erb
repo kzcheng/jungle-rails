@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <% Product.where(id: @order.line_items.map { |item| item.product_id }).map { |product| { product: product, quantity: cart[product.id.to_s] } }.each do |item| %>
+          <% @enhanced_order_items.each do |item| %>
             <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
           <% end %>
         </tbody>
