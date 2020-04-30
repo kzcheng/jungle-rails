@@ -5,8 +5,46 @@
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <%# <h4>Thank you for your order!</h4> %>
+    <div class="panel panel-default items">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="2">Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Product.where(id: @order.line_items.map { |item| item.product_id }).map { |product| { product: product, quantity: cart[product.id.to_s] } }.each do |item| %>
+            <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">
+              TOTAL:
+            </th>
+            <th>
+              <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </div>
+
+  <%# thing.inspect = 
+    #<LineItem id: 3, 
+      order_id: 3, 
+      product_id: 1, 
+      quantity: 1, 
+      item_price_cents: 6499, 
+      total_price_cents: 6499, 
+      created_at: "2020-04-30 01:51:39", 
+      updated_at: "2020-04-30 01:51:39"
+  >%>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 

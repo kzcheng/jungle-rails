@@ -1,6 +1,18 @@
 class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    # pp @order.line_items[0].product.name
+    # pp @order.line_items
+    # raise @products
+
+    puts "\n\n\n\nLOOK AT HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    # pp Product.where(id: cart.keys)
+    pp cart
+    ids_of_stuff_i_need = @order.line_items.map { |item| item.product_id }
+    @enhanced_order_items = Product.where(id: ids_of_stuff_i_need).map { |product| { product: product, quantity: cart[product.id.to_s] } }
+    # Product.where(id: cart.keys).map { |product| { product: product, quantity: cart[product.id.to_s] }.each do |item|
+    #   #  render 'item', product: item[:product], quantity: item[:quantity].to_i
+    # end
   end
 
   def create
