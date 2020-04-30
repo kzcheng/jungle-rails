@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   root to: "products#index"
 
+  # Resources sets up routes
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
-
+  resources :about, only: [:index]
+  resources :orders, only: [:create, :show]
   resource :cart, only: [:show] do
     post :add_item
     post :remove_item
   end
-
-  resources :orders, only: [:create, :show]
 
   namespace :admin do
     root to: "dashboard#show"
