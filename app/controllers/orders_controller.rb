@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     # puts "\n\n\n\nLOOK AT HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    # pp @order.email
     # pp @order.line_items
     # pp @order.total_cents
     # pp @order.line_items[0].product.name
