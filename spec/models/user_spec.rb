@@ -77,6 +77,18 @@ RSpec.describe User, type: :model do
         test_user.validate
         expect(test_user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+
+      it "is invalid if passwords are too short" do
+        test_user = User.new(
+          "first_name": "Kevin",
+          "last_name": "Cheng",
+          "email": "kevinzifancheng@gmail.com",
+          "password": "a",
+          "password_confirmation": "a",
+        )
+        test_user.validate
+        expect(test_user.errors.full_messages).to include("Password is too short (minimum is 2 characters)")
+      end
     end
 
     describe "Email" do
@@ -90,6 +102,27 @@ RSpec.describe User, type: :model do
         test_user.validate
         expect(test_user.errors.full_messages).to include("Email can't be blank")
       end
+
+      # it "is invalid if email is not unique" do
+      #   test_user = User.new(
+      #     "first_name": "Kevin",
+      #     "last_name": "Cheng",
+      #     "email": "kevinzifancheng@gmail.com",
+      #     "password": "good",
+      #     "password_confirmation": "good",
+      #   )
+      #   test_user2 = User.new(
+      #     "first_name": "Kevin",
+      #     "last_name": "Cheng",
+      #     "email": "kevinzifancheng@gmail.com",
+      #     "password": "good",
+      #     "password_confirmation": "good",
+      #   )
+      #   test_user.validate
+      #   expect(test_user.errors.full_messages).to be_empty
+      #   test_user2.validate
+      #   expect(test_user.errors.full_messages).to be_empty
+      # end
     end
   end
 end
