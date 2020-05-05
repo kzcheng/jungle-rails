@@ -54,17 +54,15 @@ RSpec.describe Product, type: :model do
       )
       test_product.validate
       expect(test_product.errors.full_messages).to include("Category can't be blank")
-
-      # expect(test_product).to be_valid
     end
 
-    # it "is not valid without a category" do
-    #   test_product = Product.new(
-    #     "name": "test",
-    #     "price": 50,
-    #     "quantity": 50,
-    #   )
-    #   pp test_product.errors
-    # end
+    it "is not valid with multiple missing data" do
+      test_product = Product.new(
+        "price": 50,
+        "quantity": 50,
+      )
+      test_product.validate
+      expect(test_product.errors.full_messages).to include("Name can't be blank", "Category can't be blank")
+    end
   end
 end
