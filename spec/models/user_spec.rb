@@ -9,14 +9,14 @@ RSpec.describe User, type: :model do
   end
 
   describe "Validations" do
-    # it "is valid with valid attributes" do
-    #   test_product = User.new(
-    #     "name": "test",
-    #     "price": 50,
-    #     "quantity": 50,
-    #     "category": @test_category,
-    #   )
-    #   expect(test_product).to be_valid
-    # end
+    it "is valid with valid attributes" do
+      test_user = User.new(
+        "first_name": "Kevin",
+        "last_name": "Cheng",
+        "email": "kevinzifancheng@gmail.com",
+        "password_digest": "string",
+      )
+      expect(test_user).to be_valid
+    end
   end
 end
