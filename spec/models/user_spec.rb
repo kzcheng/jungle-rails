@@ -43,6 +43,18 @@ RSpec.describe User, type: :model do
         test_user.validate
         expect(test_user.errors.full_messages).to include("Password confirmation can't be blank")
       end
+
+      it "is invalid if passwords are not the same" do
+        test_user = User.new(
+          "first_name": "Kevin",
+          "last_name": "Cheng",
+          "email": "kevinzifancheng@gmail.com",
+          "password": "good",
+          "password_confirmation": "bad",
+        )
+        test_user.validate
+        expect(test_user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
     end
   end
 end
