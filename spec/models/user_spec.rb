@@ -17,7 +17,8 @@ RSpec.describe User, type: :model do
         "password": "good",
         "password_confirmation": "good",
       )
-      expect(test_user).to be_valid
+      test_user.validate
+      expect(test_user.errors.full_messages).to be_empty
     end
 
     describe "Passwords" do
@@ -28,7 +29,8 @@ RSpec.describe User, type: :model do
           "email": "kevinzifancheng@gmail.com",
           "password_confirmation": "good",
         )
-        expect(test_user).to be_invalid
+        test_user.validate
+        expect(test_user.errors.full_messages).to include("Password can't be blank")
       end
 
       it "is invalid if password_confirmation is missing" do
@@ -38,7 +40,8 @@ RSpec.describe User, type: :model do
           "email": "kevinzifancheng@gmail.com",
           "password": "good",
         )
-        expect(test_user).to be_invalid
+        test_user.validate
+        expect(test_user.errors.full_messages).to include("Password confirmation can't be blank")
       end
     end
   end
