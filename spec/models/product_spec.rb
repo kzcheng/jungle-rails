@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Product, type: :model do
-  describe "Validations" do
+  describe "Validation" do
     before(:all) do
       @test_category = Category.new
     end
