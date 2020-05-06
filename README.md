@@ -2,6 +2,11 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+Used skills includes Ruby, Rails, PostgreSQL, Capybara, Poltergeist, DatabaseCleaner, Stripe.
+
+## Screenshots
+![Homepage](https://github.com/kzcheng/jungle-rails/blob/master/doc/screenshots/homepage.png)
+![Shopping Cart](https://github.com/kzcheng/jungle-rails/blob/master/doc/screenshots/cart.png)
 
 ## Setup
 
